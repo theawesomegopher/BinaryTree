@@ -37,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
             tree.add(num);
         }
         displayTree(this.tree);
+        input.setText("");
+    }
+
+    public void displayInOrderClicked(View view) {
+        this.display.removeAllViews();
+        tree.displayInOrder(tree, this.display, this);
+
     }
 
     private void displayTree(BinaryTree tree) {
