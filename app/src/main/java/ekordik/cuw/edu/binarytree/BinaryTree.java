@@ -73,6 +73,34 @@ public class BinaryTree {
         return "{\"depth\": \"" + this.depth + "\", \"position\":\"" + this.position + "\", \"payload\":" + this.payload + "}";
     }
 
+    public int getDepth() {
+        int leftDepth = 0;
+        int rightDepth = 0;
+
+        if(this.leftTree != null){
+            leftDepth = this.leftTree.getDepth()+1;
+        }
+
+        if(this.rightTree != null){
+            rightDepth = this.rightTree.getDepth() +1;
+        }
+
+        return leftDepth >= rightDepth ? leftDepth : rightDepth;
+    }
+
+    public TreeState getBalance() {
+        int leftDepth = this.leftTree != null ? this.leftTree.getDepth() : 0;
+        int rightDepth = this.rightTree != null ? this.rightTree.getDepth() : 0;
+
+        int difference = Math.abs(leftDepth - rightDepth);
+        if(difference <= 1) {
+            return TreeState.BALANCED;
+        }else if(leftDepth > rightDepth) {
+            return TreeState.LEFT;
+        }else {
+            return TreeState.RIGHT;
+        }
+    }
 
     public void displayInOrder(BinaryTree tree, ViewGroup view, Context context){
         if(tree == null) {

@@ -46,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void checkBalanceClicked(View view) {
+        this.display.removeAllViews();
+        TextView tv = new TextView(this);
+        tv.setText(this.tree.getBalance().toString());
+        display.addView(tv);
+    }
+
     private void displayTree(BinaryTree tree) {
         display.removeAllViews();
         level = 1;
